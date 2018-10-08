@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   Ename: Hidrogeno
-  symbol: {fileID: 0}
+  symbol: {fileID: 21300000, guid: d80311662a06d394399f95adb76ecc93, type: 3}
   numEnlases: 1
   info: hidrogeno
   mat: {fileID: 0}

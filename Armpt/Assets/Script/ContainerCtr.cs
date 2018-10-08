@@ -11,10 +11,12 @@ public class ContainerCtr : MonoBehaviour {
 	private bool combine = false;
 	// Use this for initialization
 	void Start () {
-		if(ContainElement == null || ContainCompuesto!=null)
+        DontDestroyOnLoad(this);
+        if (ContainElement == null || ContainCompuesto!=null)
 		{
 			clearlinks();
 		}
+     
 	}
 	
 	// Update is called once per frame
@@ -29,7 +31,12 @@ public class ContainerCtr : MonoBehaviour {
 		activelinks(el.numEnlases);
 
 	}
-
+    public void clearElement()
+    {
+        ContainElement = null;
+        element.SetActive(false);
+        clearlinks();
+    }
 	void activelinks(int numi)
 	{
 		for(int i = 0;i<numi;i++)
@@ -44,4 +51,5 @@ public class ContainerCtr : MonoBehaviour {
 			el.gameObject.SetActive(false);
 		}
 	}
+
 }
