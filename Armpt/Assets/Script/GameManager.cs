@@ -16,10 +16,13 @@ public class GameManager : MonoBehaviour
     private UiManager uim;
 	private PointerEventData pEd;
 	GraphicRaycaster m_Raycaster;
+    private int[] convinaciones = new int[3];
+    private int convIndex = 0;
+    private int GcIndex = 0;
 	// Use this for initialization
 	void Start()
     {
-
+        DontDestroyOnLoad(this);
         uim = ControlUi.GetComponent<UiManager>();
         ControlUi.SetActive(false);
         for (int i = 0; i < compuestos.Length; i++)
@@ -78,7 +81,9 @@ public class GameManager : MonoBehaviour
             {
                 ContenedorSelect = hit.rigidbody.gameObject.GetComponent<ContainerCtr>();
                 ControlUi.SetActive(true);
+               
                 uim.assigContainer(ContenedorSelect);
+                
             }
 			
 
@@ -91,5 +96,39 @@ public class GameManager : MonoBehaviour
     {
         ContenedorSelect = null;
         uim.claerContainer();
+    }
+    public void reportElement(int id)
+    {
+        convinaciones[convIndex] = id;
+        if (convIndex <= 3)
+            convIndex++;
+        else
+            convIndex = 0;
+    }
+    public void clearelement(int id)
+    {
+        for(int i =0;i<convinaciones.Length;i++)
+        {
+            if(convinaciones[i]==id)
+            {
+                convinaciones[i] = 0;
+                return;
+            }
+        }
+    }
+    public void crearcompuesto()
+    {
+        int x = convinaciones[0];
+        int y = convinaciones[1];
+        int z = convinaciones[2];
+        Compuesto cop = elements[x, y, z];
+        if(cop==null)
+        {
+
+        }
+        else
+        {
+            compuestosGuardados[GcIndex] = cop;
+        }
     }
 }

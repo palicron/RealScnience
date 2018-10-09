@@ -8,10 +8,11 @@ public class ContainerCtr : MonoBehaviour {
 	public Compuesto ContainCompuesto = null;
 	public enlace[] enlaces;
 	public GameObject element;
-	private bool combine = false;
+	private int combine = 0;
+    private bool reporto = false;
 	// Use this for initialization
 	void Start () {
-        DontDestroyOnLoad(this);
+        
         if (ContainElement == null || ContainCompuesto!=null)
 		{
 			clearlinks();
@@ -42,7 +43,9 @@ public class ContainerCtr : MonoBehaviour {
 		for(int i = 0;i<numi;i++)
 		{
 			enlaces[i].gameObject.SetActive(true);
-		}
+            enlaces[i].id = ContainElement.id;
+
+        }
 	}
 	void clearlinks()
 	{
@@ -52,4 +55,29 @@ public class ContainerCtr : MonoBehaviour {
 		}
 	}
 
+    public void linked()
+    {
+        if(combine==0)
+        {
+            reportelement();
+            combine++;
+        }
+        else
+            combine++; 
+    }
+    public void delink()
+    {
+        combine--;
+        if (combine == 0)
+            remobeelemtn();
+
+    }
+    public void reportelement()
+    {
+
+    }
+    public void remobeelemtn()
+    {
+      
+    }
 }

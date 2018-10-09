@@ -7,7 +7,7 @@ public  class enlace : MonoBehaviour {
 	public int id = 0;
 	public int linid = 0;
 	public bool linket = false;
-
+    private bool report = false;
 
 	public void setid(int id)
 	{

@@ -6,6 +6,8 @@ public class UiManager : MonoBehaviour {
 
 
     public GameManager gm;
+    public GameObject elementTab;
+    public GameObject CompuestoTab;
     public Text eName;
     public Text nEnlases;
     public Text Info;
@@ -20,7 +22,7 @@ public class UiManager : MonoBehaviour {
 
         sElement = gm.element[index];
         refreshUi();
-
+        activeElementTab();
 
     }
 	
@@ -100,4 +102,16 @@ public class UiManager : MonoBehaviour {
 	{
 		this.gameObject.SetActive(false);
 	}
+
+    public void activeElementTab()
+    {
+        elementTab.SetActive(true);
+        CompuestoTab.SetActive(false);
+    }
+    public void activeCompuestoTab()
+    {
+        CompuestoTab.SetActive(true);
+        elementTab.SetActive(false);
+        
+    }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Cont
   - UI
+  - Link
   layers:
   - Default
   - TransparentFX
