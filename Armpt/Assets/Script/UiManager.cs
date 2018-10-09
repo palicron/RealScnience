@@ -10,7 +10,7 @@ public class UiManager : MonoBehaviour {
     public Text nEnlases;
     public Text Info;
     public Image symbolo;
-
+	public Text target;
     private int index = 0;
     private Element sElement;
     private Compuesto sCompuesto;
@@ -27,7 +27,8 @@ public class UiManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
+
+		target.text = selectetContainer.ToString();
 	}
 
 
@@ -81,14 +82,22 @@ public class UiManager : MonoBehaviour {
     }
     public void clearElement()
     {
+		selectetContainer.clearElement();
 
-    }
+	}
     public void assigContainer(ContainerCtr con)
     {
         selectetContainer = con;
-    }
+	
+
+	}
     public void claerContainer()
     {
         selectetContainer = null;
     }
+
+	public void closeMenu()
+	{
+		this.gameObject.SetActive(false);
+	}
 }

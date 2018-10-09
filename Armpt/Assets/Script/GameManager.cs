@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 public class GameManager : MonoBehaviour
 {
 
@@ -11,9 +12,12 @@ public class GameManager : MonoBehaviour
     public Compuesto[,,] elements = new Compuesto[5, 5, 5];
     public ContainerCtr ContenedorSelect;
     public GameObject ControlUi;
+	public EventSystem es;
     private UiManager uim;
-    // Use this for initialization
-    void Start()
+	private PointerEventData pEd;
+	GraphicRaycaster m_Raycaster;
+	// Use this for initialization
+	void Start()
     {
 
         uim = ControlUi.GetComponent<UiManager>();
@@ -53,15 +57,22 @@ public class GameManager : MonoBehaviour
 
     void Action()
     {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+		
+		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+			//pEd = new PointerEventData(es);
+			//pEd.position = Input.GetTouch(0).position;
+			//List<RaycastResult> res = new List<RaycastResult>();
+			//m_Raycaster.Raycast(pEd, res);
+			//if (res.Count !=0)
+			//	return;
+			Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
             RaycastHit hit;
             Physics.Raycast(ray.origin, ray.direction, out hit, 100f);
-            if (hit.rigidbody == null)
+            if (hit.rigidbody == null && !hit.transform.gameObject.tag.Equals("UI"))
             {
-               // clearContainer();
-               // ControlUi.SetActive(false);
+                clearContainer();
+                ControlUi.SetActive(false);
             }
             else if (hit.rigidbody.tag.Equals("Cont"))
             {
@@ -69,6 +80,9 @@ public class GameManager : MonoBehaviour
                 ControlUi.SetActive(true);
                 uim.assigContainer(ContenedorSelect);
             }
+			
+
+
 
         }
     }
