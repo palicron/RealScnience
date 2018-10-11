@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ContainerCtr : MonoBehaviour {
-
+	public GameManager gm;
 	public Element ContainElement = null;
 	public Compuesto ContainCompuesto = null;
 	public enlace[] enlaces;
 	public GameObject element;
-	private int combine = 0;
-    private bool reporto = false;
+	public int combine = 0;
+
+	private bool reporto = false;
 	// Use this for initialization
 	void Start () {
         
@@ -43,7 +44,7 @@ public class ContainerCtr : MonoBehaviour {
 		for(int i = 0;i<numi;i++)
 		{
 			enlaces[i].gameObject.SetActive(true);
-            enlaces[i].id = ContainElement.id;
+          
 
         }
 	}
@@ -57,27 +58,39 @@ public class ContainerCtr : MonoBehaviour {
 
     public void linked()
     {
-        if(combine==0)
+        if(!reporto)
         {
-            reportelement();
-            combine++;
-        }
-        else
-            combine++; 
-    }
+            
+			if (ContainElement != null)
+				reportelement(ContainElement.id);
+			else if(ContainCompuesto!=null)
+				reportelement(ContainCompuesto.id);
+			reporto = true;
+			combine++;
+		}
+		else
+			combine++;
+
+
+	}
     public void delink()
     {
         combine--;
         if (combine == 0)
-            remobeelemtn();
+		{
+			remobeelemtn(ContainElement.id);
+			reporto = false;
+		}
+            
 
     }
-    public void reportelement()
+    public void reportelement(int lid)
     {
+		gm.reportElement(lid);
 
-    }
-    public void remobeelemtn()
+	}
+    public void remobeelemtn(int lid)
     {
-      
+		gm.clearelement(lid);
     }
 }

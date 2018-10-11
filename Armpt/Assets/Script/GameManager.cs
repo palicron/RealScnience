@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         Action();
+		
     }
 
     public void asignarelemento(Element elem)
@@ -124,11 +125,13 @@ public class GameManager : MonoBehaviour
         Compuesto cop = elements[x, y, z];
         if(cop==null)
         {
-
+			Debug.Log("fuck you");
         }
         else
         {
             compuestosGuardados[GcIndex] = cop;
         }
+		int we = compuestosGuardados.Length;
+		uim.setTect(we.ToString());
     }
 }

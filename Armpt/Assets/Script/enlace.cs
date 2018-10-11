@@ -4,28 +4,26 @@ using UnityEngine;
 
 public  class enlace : MonoBehaviour {
 
-	public int id = 0;
-	public int linid = 0;
+	
+	
 	public bool linket = false;
     private bool report = false;
+	private ContainerCtr contenerdor;
 
-	public void setid(int id)
+	private void Start()
 	{
-		this.id = id;
-	}
-	public void setlinkid(int id)
-	{
-		this.linid = id;
+		contenerdor = this.GetComponentInParent<ContainerCtr>();
 	}
 
-	void clearlinks()
+	private void OnTriggerEnter(Collider other)
 	{
-		linid = 0;
+		if (other.gameObject.tag.Equals("Link"))
+			contenerdor.linked();
 	}
 
-	void clearall()
+	private void OnTriggerExit(Collider other)
 	{
-		id = 0;
-		linid = 0;
+		
+		contenerdor.delink();
 	}
 }

@@ -13,6 +13,7 @@ public class UiManager : MonoBehaviour {
     public Text Info;
     public Image symbolo;
 	public Text target;
+	public Text conbinetext;
     private int index = 0;
     private Element sElement;
     private Compuesto sCompuesto;
@@ -23,8 +24,9 @@ public class UiManager : MonoBehaviour {
         sElement = gm.element[index];
         refreshUi();
         activeElementTab();
+		conbinetext.text = "0";
 
-    }
+	}
 	
 
 	// Update is called once per frame
@@ -114,4 +116,12 @@ public class UiManager : MonoBehaviour {
         elementTab.SetActive(false);
         
     }
+	public void convineElement()
+	{
+		gm.crearcompuesto();
+	}
+	public void setTect(string dd)
+	{
+		conbinetext.text = dd;
+	}
 }
