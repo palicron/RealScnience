@@ -16,7 +16,9 @@ public class GameManager : MonoBehaviour
     private UiManager uim;
 	private PointerEventData pEd;
 	GraphicRaycaster m_Raycaster;
+    [SerializeField]
     private int[] convinaciones = new int[3];
+    [SerializeField]
     private int convIndex = 0;
     private int GcIndex = 0;
 	// Use this for initialization
@@ -123,13 +125,15 @@ public class GameManager : MonoBehaviour
         int y = convinaciones[1];
         int z = convinaciones[2];
         Compuesto cop = elements[x, y, z];
-        if(cop==null)
+        Debug.Log(cop);
+        if (cop == null)
         {
-			Debug.Log("fuck you");
+            Debug.Log("fuck you");
         }
         else
         {
             compuestosGuardados[GcIndex] = cop;
+            GcIndex++;
         }
 		int we = compuestosGuardados.Length;
 		uim.setTect(we.ToString());

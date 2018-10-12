@@ -81,7 +81,7 @@ public class ContainerCtr : MonoBehaviour {
 			remobeelemtn(ContainElement.id);
 			reporto = false;
 		}
-            
+       
 
     }
     public void reportelement(int lid)
