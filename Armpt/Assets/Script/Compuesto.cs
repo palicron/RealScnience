@@ -10,5 +10,7 @@ public class Compuesto : ScriptableObject {
 	public Sprite symbol;
 	public int[] elementosNesesario;
 	public Material mat;
+    public int enlases;
+    public string Informacion;
 
 }

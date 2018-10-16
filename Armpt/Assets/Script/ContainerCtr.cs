@@ -33,13 +33,28 @@ public class ContainerCtr : MonoBehaviour {
 		activelinks(el.numEnlases);
 
 	}
+    public void setCompuesto(Compuesto el)
+    {
+        ContainCompuesto = el;
+        element.SetActive(true);
+        activelinks(el.enlases);
+
+    }
     public void clearElement()
     {
         ContainElement = null;
         element.SetActive(false);
+        ContainCompuesto = null;
         clearlinks();
     }
-	void activelinks(int numi)
+    public void clearCompuesto()
+    {
+        ContainElement = null;
+        ContainCompuesto = null;
+        element.SetActive(false);
+        clearlinks();
+    }
+    void activelinks(int numi)
 	{
 		for(int i = 0;i<numi;i++)
 		{

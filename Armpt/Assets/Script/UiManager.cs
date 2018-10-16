@@ -8,12 +8,18 @@ public class UiManager : MonoBehaviour {
     public GameManager gm;
     public GameObject elementTab;
     public GameObject CompuestoTab;
+    public GameObject navigationButtons;
     public Text eName;
     public Text nEnlases;
     public Text Info;
     public Image symbolo;
 	public Text target;
 	public Text conbinetext;
+    public Text cName;
+    public Text nCnlases;
+    public Text cInfo;
+    public Image csymbolo;
+    public Text Cconbinetext;
     private int index = 0;
     private Element sElement;
     private Compuesto sCompuesto;
@@ -69,26 +75,85 @@ public class UiManager : MonoBehaviour {
             }
         }
     }
+
+    public void nextComponent(int a)
+    {
+        if (a == 1)
+        {
+            if (index + 1 < gm.compuestosGuardados.Length)
+            {
+                index += 1;
+                sCompuesto = gm.compuestosGuardados[index];
+                refreshUi();
+            }
+            else
+            {
+                index = 0;
+                sCompuesto = gm.compuestosGuardados[index];
+                refreshUi();
+            }
+        }
+        else
+        {
+            if (index - 1 >= 0)
+            {
+                index -= 1;
+                sCompuesto = gm.compuestosGuardados[index];
+                refreshUi();
+            }
+            else
+            {
+                index = gm.element.Length - 1;
+                sCompuesto = gm.compuestosGuardados[index];
+                refreshUi();
+            }
+        }
+    }
     void refreshUi()
     {
-        eName.text = sElement.Ename;
-        nEnlases.text =  sElement.numEnlases.ToString();
-        Info.text = sElement.info;
-        symbolo.sprite = sElement.symbol;
+        if(sElement!=null)
+        {
+            eName.text = sElement.Ename;
+            nEnlases.text = sElement.numEnlases.ToString();
+            Info.text = sElement.info;
+            symbolo.sprite = sElement.symbol;
+        }
+        else if(sCompuesto!=null)
+        {
+            cName.text = sCompuesto.Ename;
+            nCnlases.text = sCompuesto.enlases.ToString();
+            cInfo.text = sCompuesto.Informacion;
+            csymbolo.sprite = sCompuesto.symbol;
+        }
+      
     }
     public void assignElement()
     {
-        if (selectetContainer.ContainElement != null)
+        if (selectetContainer.ContainElement != null || sElement == null)
             return;
 
         selectetContainer.setelemento(sElement);
 
     }
+    public void assignComponent()
+    {
+        if (selectetContainer.ContainElement != null || sCompuesto==null)
+            return;
+
+        selectetContainer.setCompuesto(sCompuesto);
+
+    }
+
     public void clearElement()
     {
 		selectetContainer.clearElement();
 
 	}
+    public void clearCompuesto()
+    {
+        selectetContainer.clearCompuesto();
+
+    }
     public void assigContainer(ContainerCtr con)
     {
         selectetContainer = con;
@@ -108,13 +173,16 @@ public class UiManager : MonoBehaviour {
     public void activeElementTab()
     {
         elementTab.SetActive(true);
+        navigationButtons.SetActive(true);
         CompuestoTab.SetActive(false);
+        refreshUi();
     }
     public void activeCompuestoTab()
     {
         CompuestoTab.SetActive(true);
+        navigationButtons.SetActive(true);
         elementTab.SetActive(false);
-        
+        refreshUi();
     }
 	public void convineElement()
 	{
@@ -124,4 +192,8 @@ public class UiManager : MonoBehaviour {
 	{
 		conbinetext.text = dd;
 	}
+    public void exit()
+    {
+        this.gameObject.SetActive(false);
+    }
 }
