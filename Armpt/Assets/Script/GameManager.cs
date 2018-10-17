@@ -6,10 +6,11 @@ using UnityEngine.EventSystems;
 public class GameManager : MonoBehaviour
 {
 
+    
     public Element[] element;
     public Compuesto[] compuestos;
     public Compuesto[] compuestosGuardados;
-    public Compuesto[,,] elements = new Compuesto[5, 5, 5];
+    public Compuesto[,,] elements = new Compuesto[12, 12, 12];
     public ContainerCtr ContenedorSelect;
     public GameObject ControlUi;
 	public EventSystem es;
@@ -24,6 +25,9 @@ public class GameManager : MonoBehaviour
 	// Use this for initialization
 	void Start()
     {
+        Screen.autorotateToPortrait = false;
+        Screen.autorotateToPortraitUpsideDown = false;
+        Screen.orientation = ScreenOrientation.LandscapeRight;
         DontDestroyOnLoad(this);
         uim = ControlUi.GetComponent<UiManager>();
         ControlUi.SetActive(false);
@@ -50,7 +54,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         Action();
-		
+
     }
 
     public void asignarelemento(Element elem)
@@ -102,11 +106,20 @@ public class GameManager : MonoBehaviour
     }
     public void reportElement(int id)
     {
-        convinaciones[convIndex] = id;
-        if (convIndex <= 3)
+       
+        if (convIndex < 3)
+        {
+            convinaciones[convIndex] = id;
             convIndex++;
+
+        }
         else
+        {
             convIndex = 0;
+            convinaciones[convIndex] = id;
+
+        }
+
     }
     public void clearelement(int id)
     {
@@ -124,18 +137,23 @@ public class GameManager : MonoBehaviour
         int x = convinaciones[0];
         int y = convinaciones[1];
         int z = convinaciones[2];
+        Debug.Log(x);
+        Debug.Log(y);
+        Debug.Log(z);
         Compuesto cop = elements[x, y, z];
         Debug.Log(cop);
         if (cop == null)
         {
-            Debug.Log("fuck you");
+            uim.DisplayMenu(null);
         }
         else
         {
             compuestosGuardados[GcIndex] = cop;
+            uim.DisplayMenu(cop.Ename);
             GcIndex++;
         }
 		int we = compuestosGuardados.Length;
-		uim.setTect(we.ToString());
+        uim.refreshUi();
+		
     }
 }

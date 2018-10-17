@@ -12,5 +12,7 @@ public class Element : ScriptableObject
 	public int numEnlases;
 	public string info;
 	public Material mat;
+    public int numeroElectrones;
+    public int numeroProtones;
 
 }

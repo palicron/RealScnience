@@ -17,3 +17,5 @@ MonoBehaviour:
   numEnlases: 2
   info: oxigeno
   mat: {fileID: 0}
+  numeroElectrones: 2
+  numeroProtones: 0

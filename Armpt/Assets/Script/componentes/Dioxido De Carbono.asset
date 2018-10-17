@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc969e99ee1997844a04ba33cb39e5ed, type: 3}
+  m_Name: Dioxido De Carbono
+  m_EditorClassIdentifier: 
+  id: 6
+  Ename: Dioxido De carbono
+  symbol: {fileID: 21300000, guid: 49f5e4bb661a2c446b8601d0a880cf57, type: 3}
+  elementosNesesario: 030000000400000000000000
+  mat: {fileID: 2100000, guid: 3ad3bda48c21eb5498fe43045f83bd5c, type: 2}
+  enlases: 0
+  Informacion: toxico

@@ -17,3 +17,5 @@ MonoBehaviour:
   numEnlases: 1
   info: hidrogeno
   mat: {fileID: 0}
+  numeroElectrones: 1
+  numeroProtones: 0

@@ -20,28 +20,25 @@ public class UiManager : MonoBehaviour {
     public Text cInfo;
     public Image csymbolo;
     public Text Cconbinetext;
+    public GameObject CreatMenu;
+    public Text textoConvinacion;
+    public GameObject exitotext;
+    public GameObject failconvinacion;
     private int index = 0;
     private Element sElement;
+    [SerializeField]
     private Compuesto sCompuesto;
     private ContainerCtr selectetContainer;
 	// Use this for initialization
 	void Start () {
 
         sElement = gm.element[index];
+        sCompuesto = gm.compuestosGuardados[index];
         refreshUi();
         activeElementTab();
-		conbinetext.text = "0";
-
+        next();
 	}
 	
-
-	// Update is called once per frame
-	void Update () {
-
-		target.text = selectetContainer.ToString();
-	}
-
-
       void  nextElement(int a)
     {
         if (a == 1)
@@ -109,27 +106,28 @@ public class UiManager : MonoBehaviour {
             }
         }
     }
-    void refreshUi()
+    public void refreshUi()
     {
-        if(sElement!=null)
-        {
-            eName.text = sElement.Ename;
+        if (sElement == null)
+            return;
+        eName.text = sElement.Ename;
             nEnlases.text = sElement.numEnlases.ToString();
             Info.text = sElement.info;
             symbolo.sprite = sElement.symbol;
-        }
-        else if(sCompuesto!=null)
-        {
+
+        if (sCompuesto == null)
+            return;
+
             cName.text = sCompuesto.Ename;
             nCnlases.text = sCompuesto.enlases.ToString();
             cInfo.text = sCompuesto.Informacion;
             csymbolo.sprite = sCompuesto.symbol;
-        }
+        
       
     }
     public void assignElement()
     {
-        if (selectetContainer.ContainElement != null || sElement == null)
+        if ((selectetContainer.ContainElement != null || selectetContainer.ContainCompuesto != null) || sElement == null)
             return;
 
         selectetContainer.setelemento(sElement);
@@ -137,7 +135,7 @@ public class UiManager : MonoBehaviour {
     }
     public void assignComponent()
     {
-        if (selectetContainer.ContainElement != null || sCompuesto==null)
+        if ((selectetContainer.ContainElement != null || selectetContainer.ContainCompuesto != null) || sCompuesto==null)
             return;
 
         selectetContainer.setCompuesto(sCompuesto);
@@ -149,11 +147,7 @@ public class UiManager : MonoBehaviour {
 		selectetContainer.clearElement();
 
 	}
-    public void clearCompuesto()
-    {
-        selectetContainer.clearCompuesto();
-
-    }
+  
     public void assigContainer(ContainerCtr con)
     {
         selectetContainer = con;
@@ -186,14 +180,33 @@ public class UiManager : MonoBehaviour {
     }
 	public void convineElement()
 	{
+        Debug.Log("entre");
 		gm.crearcompuesto();
 	}
-	public void setTect(string dd)
-	{
-		conbinetext.text = dd;
-	}
+
     public void exit()
     {
         this.gameObject.SetActive(false);
+    }
+
+    public void next()
+    {
+        CreatMenu.SetActive(false);
+    }
+    public void DisplayMenu(string com)
+    {
+        CreatMenu.SetActive(true);
+     
+         if(com!=null)
+        {
+            failconvinacion.SetActive(false);
+            exitotext.SetActive(true);
+            textoConvinacion.text = com;
+        }
+        else
+        {
+            exitotext.SetActive(false);
+            failconvinacion.SetActive(true);
+        }
     }
 }

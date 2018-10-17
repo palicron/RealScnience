@@ -21,9 +21,10 @@ public  class enlace : MonoBehaviour {
 			contenerdor.linked();
 	}
 
-	private void OnTriggerExit(Collider other)
+   
+    private void OnTriggerExit(Collider other)
 	{
-		
-		contenerdor.delink();
+        if (other.gameObject.tag.Equals("Link"))
+            contenerdor.delink();
 	}
 }

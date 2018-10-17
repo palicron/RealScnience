@@ -8,8 +8,9 @@ public class ContainerCtr : MonoBehaviour {
 	public Compuesto ContainCompuesto = null;
 	public enlace[] enlaces;
 	public GameObject element;
+    public GameObject Compuesto;
 	public int combine = 0;
-
+    public Material defmatirial;
 	private bool reporto = false;
 	// Use this for initialization
 	void Start () {
@@ -30,13 +31,15 @@ public class ContainerCtr : MonoBehaviour {
 	{
 		ContainElement = el;
 		element.SetActive(true);
+        element.GetComponent<NucleoControl>().starElement(el.numeroElectrones);
 		activelinks(el.numEnlases);
 
 	}
     public void setCompuesto(Compuesto el)
     {
         ContainCompuesto = el;
-        element.SetActive(true);
+        Compuesto.SetActive(true);
+        Compuesto.GetComponent<Renderer>().material = el.mat;
         activelinks(el.enlases);
 
     }
@@ -45,15 +48,11 @@ public class ContainerCtr : MonoBehaviour {
         ContainElement = null;
         element.SetActive(false);
         ContainCompuesto = null;
-        clearlinks();
-    }
-    public void clearCompuesto()
-    {
+        Compuesto.SetActive(false);
         ContainElement = null;
-        ContainCompuesto = null;
-        element.SetActive(false);
         clearlinks();
     }
+   
     void activelinks(int numi)
 	{
 		for(int i = 0;i<numi;i++)
@@ -74,11 +73,11 @@ public class ContainerCtr : MonoBehaviour {
     public void linked()
     {
         if(!reporto)
-        {
+       {
             
 			if (ContainElement != null)
 				reportelement(ContainElement.id);
-			else if(ContainCompuesto!=null)
+			if(ContainCompuesto!=null)
 				reportelement(ContainCompuesto.id);
 			reporto = true;
 			combine++;
@@ -91,7 +90,7 @@ public class ContainerCtr : MonoBehaviour {
     public void delink()
     {
         combine--;
-        if (combine == 0)
+       if (combine == 0)
 		{
 			remobeelemtn(ContainElement.id);
 			reporto = false;

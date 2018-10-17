@@ -11,8 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc969e99ee1997844a04ba33cb39e5ed, type: 3}
   m_Name: Agua
   m_EditorClassIdentifier: 
-  id: 0
+  id: 5
   Ename: Agua
-  symbol: {fileID: 0}
+  symbol: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   elementosNesesario: 010000000100000002000000
-  mat: {fileID: 0}
+  mat: {fileID: 2100000, guid: 910ae0ec2797290479820338c1f4aa8d, type: 2}
+  enlases: 0
+  Informacion: Agua comun

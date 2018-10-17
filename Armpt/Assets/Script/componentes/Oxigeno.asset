@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc969e99ee1997844a04ba33cb39e5ed, type: 3}
   m_Name: Oxigeno
   m_EditorClassIdentifier: 
-  id: 1
+  id: 4
   Ename: Oxigeno
-  symbol: {fileID: 0}
+  symbol: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   elementosNesesario: 020000000200000000000000
-  mat: {fileID: 0}
+  mat: {fileID: 2100000, guid: 9d5b283ecd6832944a73ebc0a7b68bf8, type: 2}
   enlases: 2
-  Informacion: 
+  Informacion: oxigeno puro
