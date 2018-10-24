@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   Ename: Oxigeno
-  symbol: {fileID: 21300000, guid: 4c2b8678285dd204bbb9ee8f71b75abe, type: 3}
+  symbol: {fileID: 21300066, guid: 2097d2533bc9bb949bbe4a8e91b38bb2, type: 3}
   numEnlases: 2
   info: oxigeno
   mat: {fileID: 0}

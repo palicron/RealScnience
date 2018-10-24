@@ -5,7 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/MainMenu.unity
+    guid: 4d48f881e29c2ea46ab238db67ce8950
+  - enabled: 1
+    path: Assets/Scenes/Menu 3D.unity
+    guid: fa0913115ac1d4fba8b9d10280f4b04d
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Astronimia.unity
+    guid: 58d4f1385bed2654a86047b8dd729a15
+  - enabled: 0
+    path: Assets/Low Poly Flat Sci Fi Assets/Demo/Scenes/Sample Scene.unity
+    guid: 0b0403de45d31496f8b90f72b42b0ba0
   m_configObjects: {}

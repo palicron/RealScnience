@@ -27,7 +27,7 @@ public class UiManager : MonoBehaviour {
     private int index = 0;
     private Element sElement;
     [SerializeField]
-    private Compuesto sCompuesto;
+    public Compuesto sCompuesto;
     private ContainerCtr selectetContainer;
 	// Use this for initialization
 	void Start () {
@@ -39,7 +39,7 @@ public class UiManager : MonoBehaviour {
         next();
 	}
 	
-      void  nextElement(int a)
+     public void  nextElement(int a)
     {
         if (a == 1)
         {
@@ -206,7 +206,12 @@ public class UiManager : MonoBehaviour {
         else
         {
             exitotext.SetActive(false);
-            failconvinacion.SetActive(true);
+			
+			failconvinacion.SetActive(true);
         }
     }
+	public void returnmenu()
+	{
+		gm.returnM();
+	}
 }

@@ -1,30 +1,66 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Vuforia;
 
-public class ContainerCtr : MonoBehaviour {
+public class ContainerCtr : MonoBehaviour, ITrackableEventHandler
+{
 	public GameManager gm;
 	public Element ContainElement = null;
 	public Compuesto ContainCompuesto = null;
-	public enlace[] enlaces;
+	public enlace enlaces;
 	public GameObject element;
     public GameObject Compuesto;
+	public TrackableBehaviour track;
 	public int combine = 0;
     public Material defmatirial;
 	private bool reporto = false;
+	private Renderer ren;
+	public string dd;
+	public LineRenderer lRen;
+	public GameObject targetr;
+	private bool con = false;
 	// Use this for initialization
 	void Start () {
-        
-        if (ContainElement == null || ContainCompuesto!=null)
+		track = this.GetComponentInParent<TrackableBehaviour>();
+
+		
+        if (ContainElement == null && ContainCompuesto==null)
 		{
 			clearlinks();
 		}
-     
+		else if(ContainElement !=null)
+		{
+			activelinks(ContainElement.numEnlases);
+		}
+		else
+		{
+			activelinks(ContainCompuesto.enlases);
+		}
+	
+
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(!istrack())
+		{
+			enlaces.gameObject.SetActive(false);
+			if (reporto)
+				delink();
+
+		}
+	    else
+		{
+			enlaces.gameObject.SetActive(true);
+		}
+		if (lRen == null && con)
+			return;
+		Vector3 pa = targetr.transform.position;
+		lRen.SetPosition(0, transform.position);
+		lRen.SetPosition(1, pa);
+
 	}
 
 	public void setelemento(Element el)
@@ -45,6 +81,7 @@ public class ContainerCtr : MonoBehaviour {
     }
     public void clearElement()
     {
+		delink();
         ContainElement = null;
         element.SetActive(false);
         ContainCompuesto = null;
@@ -55,19 +92,12 @@ public class ContainerCtr : MonoBehaviour {
    
     void activelinks(int numi)
 	{
-		for(int i = 0;i<numi;i++)
-		{
-			enlaces[i].gameObject.SetActive(true);
-          
-
-        }
+		enlaces.setNlinks(numi);
 	}
 	void clearlinks()
 	{
-		foreach (enlace el in enlaces)
-		{
-			el.gameObject.SetActive(false);
-		}
+		enlaces.setNlinks(0);
+		delink();
 	}
 
     public void linked()
@@ -77,7 +107,7 @@ public class ContainerCtr : MonoBehaviour {
             
 			if (ContainElement != null)
 				reportelement(ContainElement.id);
-			if(ContainCompuesto!=null)
+			else if(ContainCompuesto!=null)
 				reportelement(ContainCompuesto.id);
 			reporto = true;
 			combine++;
@@ -89,10 +119,16 @@ public class ContainerCtr : MonoBehaviour {
 	}
     public void delink()
     {
+		targetr = null;
+		con = false;
+	 if(combine>0)
         combine--;
        if (combine == 0)
 		{
+			if(ContainElement!=null)
 			remobeelemtn(ContainElement.id);
+			else if(ContainCompuesto!=null)
+				remobeelemtn(ContainCompuesto.id);
 			reporto = false;
 		}
        
@@ -107,4 +143,23 @@ public class ContainerCtr : MonoBehaviour {
     {
 		gm.clearelement(lid);
     }
+
+	private bool istrack()
+	{
+		var stat = track.CurrentStatus;
+		bool ss = stat == TrackableBehaviour.Status.TRACKED;
+		dd = ss.ToString();
+		return stat == TrackableBehaviour.Status.TRACKED;  
+		
+	}
+
+	public void conet(GameObject df)
+	{
+		targetr = df;
+		con = true;
+	}
+	public void OnTrackableStateChanged(TrackableBehaviour.Status previousStatus, TrackableBehaviour.Status newStatus)
+	{
+		throw new System.NotImplementedException();
+	}
 }

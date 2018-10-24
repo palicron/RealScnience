@@ -6,9 +6,13 @@ using UnityEngine.EventSystems;
 public class GameManager : MonoBehaviour
 {
 
-    
-    public Element[] element;
+	public Text p1;
+	public Text p2;
+	public Text p3;
+	public Text p4;
+	public Element[] element;
     public Compuesto[] compuestos;
+	public SceneManagement sm;
     public Compuesto[] compuestosGuardados;
     public Compuesto[,,] elements = new Compuesto[12, 12, 12];
     public ContainerCtr ContenedorSelect;
@@ -25,10 +29,11 @@ public class GameManager : MonoBehaviour
 	// Use this for initialization
 	void Start()
     {
+		sm = GameObject.Find("Scenemangaer").GetComponent<SceneManagement>();
         Screen.autorotateToPortrait = false;
         Screen.autorotateToPortraitUpsideDown = false;
-        Screen.orientation = ScreenOrientation.LandscapeRight;
-        DontDestroyOnLoad(this);
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+       // DontDestroyOnLoad(this);
         uim = ControlUi.GetComponent<UiManager>();
         ControlUi.SetActive(false);
         for (int i = 0; i < compuestos.Length; i++)
@@ -41,10 +46,12 @@ public class GameManager : MonoBehaviour
             y = compuestos[i].elementosNesesario[1];
             z = compuestos[i].elementosNesesario[2];
             elements[x, y, z] = compuestos[i];
-            elements[z, x, y] = compuestos[i];
-            elements[y, z, x] = compuestos[i];
+			elements[y, x, z] = compuestos[i];
+			elements[z, x, y] = compuestos[i];
+			elements[y, z, x] = compuestos[i];
+			elements[z, y, x] = compuestos[i];
             elements[x, z, y] = compuestos[i];
-            elements[y, x, z] = compuestos[i];
+         
 
         }
 
@@ -54,8 +61,13 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         Action();
+		p1.text = convinaciones[0].ToString();
+		p2.text = convinaciones[1].ToString();
+		p3.text = convinaciones[2].ToString();
+		if (ContenedorSelect != null)
+			p4.text = ContenedorSelect.dd;
 
-    }
+	}
 
     public void asignarelemento(Element elem)
     {
@@ -106,19 +118,28 @@ public class GameManager : MonoBehaviour
     }
     public void reportElement(int id)
     {
+
+		for(int i=0;i<convinaciones.Length;i++)
+		{
+			if(convinaciones[i]==0)
+			{
+				convinaciones[i] = id;
+				return;
+			}
+		}
        
-        if (convIndex < 3)
-        {
-            convinaciones[convIndex] = id;
-            convIndex++;
+        //if (convIndex < 3)
+        //{
+        //    convinaciones[convIndex] = id;
+        //    convIndex++;
 
-        }
-        else
-        {
-            convIndex = 0;
-            convinaciones[convIndex] = id;
+        //}
+        //else
+        //{
+        //    convIndex = 0;
+        //    convinaciones[convIndex] = id;
 
-        }
+        //}
 
     }
     public void clearelement(int id)
@@ -149,11 +170,18 @@ public class GameManager : MonoBehaviour
         else
         {
             compuestosGuardados[GcIndex] = cop;
-            uim.DisplayMenu(cop.Ename);
+            uim.DisplayMenu(compuestosGuardados[GcIndex].Ename);
             GcIndex++;
         }
 		int we = compuestosGuardados.Length;
-        uim.refreshUi();
+		uim.sCompuesto = compuestosGuardados[GcIndex];
+
+		uim.refreshUi();
 		
     }
+	public void returnM()
+   {
+		sm.loadMenu();
+	}
+
 }

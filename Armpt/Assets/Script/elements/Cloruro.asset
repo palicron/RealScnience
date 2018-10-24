@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f381a62f8b9b05479c45dcef7aee26c, type: 3}
+  m_Name: Cloruro
+  m_EditorClassIdentifier: 
+  id: 8
+  Ename: Cloruro
+  symbol: {fileID: 21300104, guid: 2097d2533bc9bb949bbe4a8e91b38bb2, type: 3}
+  numEnlases: 3
+  info: 
+  mat: {fileID: 2100000, guid: a63196c6db04f2b47a9e73bc237bcbf6, type: 2}
+  numeroElectrones: 0
+  numeroProtones: 0
