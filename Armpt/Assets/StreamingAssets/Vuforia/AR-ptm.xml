@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="ths-184-warriors-lesson" size="1.000000 1.392857" />
+    <ImageTarget name="ths-29-setessan-battle-priest" size="1.000000 1.392857" />
+    <ImageTarget name="ths-19-hopeful-eidolon" size="1.000000 1.392857" />
+    <ImageTarget name="trained-caracal-32479-medium" size="1.000000 1.447653" />
+    <ImageTarget name="Image" size="1.000000 1.390135" />
+    <ImageTarget name="chemisters-trick-32380-medium" size="1.000000 1.447653" />
+    <ImageTarget name="centaur-healer-32325-medium" size="1.000000 1.447653" />
     <ImageTarget name="spear" size="0.600000 0.834081" />
     <ImageTarget name="angels-mercy-30139-medium" size="0.600000 0.868592" />
     <ImageTarget name="download" size="0.600000 0.836842" />
-    <ImageTarget name="target1" size="1.000000 0.991853" />
-    <ImageTarget name="p5" size="1.000000 0.933806" />
-    <ImageTarget name="p4" size="1.000000 0.971867" />
     <ImageTarget name="p3" size="1.000000 0.913140" />
     <ImageTarget name="p2" size="1.000000 0.886836" />
-    <ImageTarget name="p1" size="1.000000 0.934884" />
   </Tracking>
 </QCARConfig>
