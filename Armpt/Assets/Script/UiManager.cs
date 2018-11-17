@@ -138,7 +138,12 @@ public class UiManager : MonoBehaviour {
         if ((selectetContainer.ContainElement != null || selectetContainer.ContainCompuesto != null) || sCompuesto==null)
             return;
 
-        selectetContainer.setCompuesto(sCompuesto);
+        if (!sCompuesto.gasNomble)
+            selectetContainer.setCompuesto(sCompuesto);
+        else
+            selectetContainer.intaNomble();
+
+
 
     }
 

@@ -11,6 +11,10 @@ public class Compuesto : ScriptableObject {
 	public int[] elementosNesesario;
 	public Material mat;
     public int enlases;
+    public GameObject pregas;
+    public GameObject intaGas;
     public string Informacion;
+    public bool gasNomble;
+  
 
 }

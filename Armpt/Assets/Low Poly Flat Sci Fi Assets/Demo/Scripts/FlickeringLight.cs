@@ -16,28 +16,37 @@ public class FlickeringLight : MonoBehaviour {
 	[SerializeField]
 	private float maxWaitTime	= 0.5f;
 	[SerializeField]
-	private int materialIdx ;
-
+	public int materialIdx ;
+    private Renderer ren;
 	[SerializeField]
-	private Material	onMaterial;
+	public Material	onMaterial;
 	[SerializeField]
-	private Material	offMaterial;
-
+    public Material	offMaterial;
+    public Color prendido;
 	private MeshRenderer	meshRenderer;
 	private Material []	materials;
 
 	// Use this for initialization
 	void Start () {
+
+        ren = GetComponent<Renderer>();
 		light = GetComponentInChildren <Light>();
 		if (light != null) {
 			StartCoroutine (FlickerLight ());
 		}
 		meshRenderer	= GetComponent<MeshRenderer> ();
 		materials	= meshRenderer.materials;
-	}
+        offmat();
 
-	//	Turn on and off the light
-	IEnumerator FlickerLight () {
+    }
+
+    private void Update()
+    {
+        ;
+    }
+
+    //	Turn on and off the light
+    IEnumerator FlickerLight () {
 		while (true) {
 			yield return new WaitForSeconds(Random.Range (minWaitTime, maxWaitTime));
 			light.enabled = ! light.enabled;
@@ -52,4 +61,15 @@ public class FlickeringLight : MonoBehaviour {
 			meshRenderer.materials	= materials;
 		}
 	}
+
+    public void onmat()
+    {
+        Color finalColor = prendido * Mathf.LinearToGammaSpace(2);
+        ren.material.SetColor("_EmissionColor", finalColor);
+    }
+    public void offmat()
+    {
+        Color finalColor = prendido * Mathf.LinearToGammaSpace(0);
+        ren.material.SetColor("_EmissionColor", finalColor);
+    }
 }

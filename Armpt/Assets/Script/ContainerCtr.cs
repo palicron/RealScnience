@@ -162,4 +162,11 @@ public class ContainerCtr : MonoBehaviour, ITrackableEventHandler
 	{
 		throw new System.NotImplementedException();
 	}
+
+    public void intaNomble()
+    {
+       GameObject ob = GameObject.Instantiate(ContainCompuesto.pregas, this.transform.position, this.transform.rotation);
+       ContainCompuesto.intaGas = ob;
+        ob.transform.SetParent(this.transform);
+    }
 }
