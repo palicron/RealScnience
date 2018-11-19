@@ -10,12 +10,10 @@ public class NucleoControl : MonoBehaviour {
     private float count = 0;
     public Renderer ren;
     public GameObject[] electrones;
-    public Material disolv;
-    public Material stac;
+    
     // Use this for initialization
     void Start() {
-        ren = GetComponent<Renderer>();
-        ren.material = disolv;
+       
     }
 
     // Update is called once per frame
@@ -80,6 +78,6 @@ public class NucleoControl : MonoBehaviour {
     {
      
         yield return new WaitForSecondsRealtime(3f);
-        ren.material = stac;
+       
     }
 }

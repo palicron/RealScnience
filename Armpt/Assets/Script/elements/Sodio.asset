@@ -17,5 +17,5 @@ MonoBehaviour:
   numEnlases: 3
   info: 
   mat: {fileID: 2100000, guid: 5713b5eeaa3aa4e4f914d3a7b12105f3, type: 2}
-  numeroElectrones: 0
+  numeroElectrones: 17
   numeroProtones: 0

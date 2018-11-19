@@ -16,12 +16,13 @@ MonoBehaviour:
     ufoLicenseKey: QWRYU1BxLy8vLy8vQUFBQUtQVThQcFhFV1VKeXRHMklyTThnWGdBd1FuLy9wcTNud1VRbWhubEFWcmRjZGFGRkJ6OEhjT1AzYi9uQ3prWkIzTVN6WlNueTVwQm9YYTZZMVhKTWdLdHhqM1JVNnNRL21PWFE0UFlZNk9ROFU3OFpRYmxLUUFDalk5bW42YVpUSUo1RUpZMWdwMEJWbVdqMWRmZWFEd2dYNG4rMkVsWnRvQ2VzZm9zR2UwYjdqMDBWUEFmY3JKOGZTd3VURXdyTDhwT3FoL1p3U1BuM05hMGNDWXg0MW1sZlZiekdtNUlhbyt2Z0hmZmY5R3o0ZTRDQXg3R0dWVDE4WDRPcUxxTU9NWTJ6Uzl4c3UwalhHaGF5aFRYVE9IRElQYWMvZG5LWWErdHR6NEdXLzhMUnQxSzhGYXVMN05IbkhBQ2dvQzQzeWJHVis4ZUtFNDk0R05oNFU0QnBzNlQxakoxWWcwdzcyeFhSbHN5YzNVSGI=
     delayedInitialization: 0
     cameraDeviceModeSetting: -2
-    maxSimultaneousImageTargets: 3
+    maxSimultaneousImageTargets: 5
     maxSimultaneousObjectTargets: 20
     useDelayedLoadingObjectTargets: 1
     cameraDirection: 0
     mirrorVideoBackground: 0
-    version: 7.2.23
+    version: 7.5.20
+    eulaAccepted: 1
   digitalEyewear:
     cameraOffset: 0.06
     distortionRenderingLayer: 31
@@ -46,8 +47,8 @@ MonoBehaviour:
   videoBackground:
     clippingMode: 0
     numDivisions: 2
-    videoBackgroundShader: {fileID: 15311, guid: 0000000000000000f000000000000000,
-      type: 0}
+    videoBackgroundShader: {fileID: 4800000, guid: f40623b353e2f1943b1b3ba42975db7a,
+      type: 3}
     matteShader: {fileID: 15310, guid: 0000000000000000f000000000000000, type: 0}
     videoBackgroundEnabled: 1
   deviceTracker:

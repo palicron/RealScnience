@@ -98,8 +98,12 @@ public class GameManager : MonoBehaviour
             }
             else if (hit.rigidbody.tag.Equals("Cont"))
             {
-                ContenedorSelect = hit.rigidbody.gameObject.GetComponent<ContainerCtr>();
-                ControlUi.SetActive(true);
+				if (ContenedorSelect != null)
+					ContenedorSelect.indicador.SetActive(false);
+
+				ContenedorSelect = hit.rigidbody.gameObject.GetComponent<ContainerCtr>();
+				ContenedorSelect.indicador.SetActive(true);
+				ControlUi.SetActive(true);
                
                 uim.assigContainer(ContenedorSelect);
                 
@@ -113,7 +117,9 @@ public class GameManager : MonoBehaviour
 
     void clearContainer()
     {
-        ContenedorSelect = null;
+		if (ContenedorSelect != null)
+			ContenedorSelect.indicador.SetActive(false);
+		ContenedorSelect = null;
         uim.claerContainer();
     }
     public void reportElement(int id)

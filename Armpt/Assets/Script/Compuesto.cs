@@ -15,6 +15,6 @@ public class Compuesto : ScriptableObject {
     public GameObject intaGas;
     public string Informacion;
     public bool gasNomble;
-  
+	public bool activado = true; 
 
 }

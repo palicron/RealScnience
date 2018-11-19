@@ -12,7 +12,9 @@ public class SceneManagement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		DontDestroyOnLoad(this);
-		
+		Screen.autorotateToPortrait = false;
+		Screen.autorotateToPortraitUpsideDown = false;
+		Screen.orientation = ScreenOrientation.LandscapeLeft;
 		t2.SetActive(false);
 	}
 	private void OnLevelWasLoaded(int level)

@@ -17,9 +17,10 @@ public class ContainerCtr : MonoBehaviour, ITrackableEventHandler
 	private bool reporto = false;
 	private Renderer ren;
 	public string dd;
-	public LineRenderer lRen;
+	
 	public GameObject targetr;
 	private bool con = false;
+	public GameObject indicador;
 	// Use this for initialization
 	void Start () {
 		track = this.GetComponentInParent<TrackableBehaviour>();
@@ -55,11 +56,8 @@ public class ContainerCtr : MonoBehaviour, ITrackableEventHandler
 		{
 			enlaces.gameObject.SetActive(true);
 		}
-		if (lRen == null && con)
-			return;
-		Vector3 pa = targetr.transform.position;
-		lRen.SetPosition(0, transform.position);
-		lRen.SetPosition(1, pa);
+	
+	
 
 	}
 
@@ -73,6 +71,7 @@ public class ContainerCtr : MonoBehaviour, ITrackableEventHandler
 	}
     public void setCompuesto(Compuesto el)
     {
+		
         ContainCompuesto = el;
         Compuesto.SetActive(true);
         Compuesto.GetComponent<Renderer>().material = el.mat;
